@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "Delivery",
     "User_Login",
     "Vendor",
+    "customer"
 ]
 
 MIDDLEWARE = [
