@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    max-width: 800px;
+  }
+  
+  /* Add a border to all table cells */
+  td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Add a gray background color to every other row */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the table headers */
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* Style the "view" link */
+  a {
+    color: #4CAF50;
+  }
+  
+  /* Center the Save button */
+  button[type="submit"] {
+    display: block;
+    margin: auto;
+  }
+    
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Product Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td><a href="{% url 'product_detail_views' id=product.id %}">view</a></td>
+            <td><a href="{% url 'product_update' id=product.id %}">view</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</body>
+</html>
