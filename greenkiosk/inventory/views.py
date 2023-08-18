@@ -26,7 +26,7 @@ def product_update_view(request,id):
         form = ProductUploadForm(request.POST,instance=product)
         if form.is_valid():
             form.save()
-        return redirect("product_detail_view",id=product.id)
+        return redirect("inventory/product_detail_view",id=product.id)
     else:
         form=ProductUploadForm(instance=product)
         return render(request,"inventory/edit_product.html", {'form': form})

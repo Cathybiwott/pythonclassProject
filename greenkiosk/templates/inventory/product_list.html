@@ -5,69 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table {
-    font-family: Arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin: auto;
-    max-width: 800px;
-  }
-  
-  /* Add a border to all table cells */
-  td, th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  /* Add a gray background color to every other row */
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  /* Style the table headers */
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  /* Style the "view" link */
-  a {
-    color: #4CAF50;
-  }
-  
-  /* Center the Save button */
-  button[type="submit"] {
-    display: block;
-    margin: auto;
-  }
-    
+     
+     /* CSS Style for Product Code */
+
+/* Style for the product container */
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #ccc;
+}
+
+/* Style for each product item */
+.product_item {
+  width: 300px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgb(143, 201, 7);
+}
+
+/* Style for the product image */
+.product_item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Style for the product name */
+.product_item h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style for the product description */
+.product_item h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Style for the product price */
+.product_item h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style for the view links */
+.product_item a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #0eb654;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Style for the view links on hover */
+.product_item a:hover {
+  background-color: #0056b3;
+}
+
+
     </style>
+    
 </head>
 <body>
-    <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Product Details</th>
-          </tr>
-        </thead>
-        <tbody>
+        
+        <div class="product">
           {% for product in products %}
-          <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.price}}</td>
-            <td><a href="{% url 'product_detail_views' id=product.id %}">view</a></td>
-            <td><a href="{% url 'product_update' id=product.id %}">view</a></td>
-          </tr>
+          <div class="product_item">
+            <img src="{{product.image.url}}" alt="">
+            <h2>{{product.name}}</h2>
+            <h3>{{product.description}}</h3>
+            <h4>{{product.price}}</h4>
+            <a href="{% url 'product_detail_views' id=product.id %}">view</a>
+            <a href="{% url 'product_update' id=product.id %}">Edit</a>
+          </div>
           {% endfor %}
-        </tbody>
-      </table>
+        </div>
 </body>
 </html>
